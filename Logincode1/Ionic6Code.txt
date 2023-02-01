@@ -1,0 +1,31 @@
+import { Component } from '@angular/core';
+import { NavController, AlertController } from 'ionic-angular';
+import { HomePage } from '../home/home';
+
+@Component({
+  selector: 'login',
+  templateUrl: 'login.html',
+})
+export class LoginPage {
+  constructor(public navCtrl: NavController , public alert:AlertController) {}
+
+  login(form) {
+    if (
+      form.value.email == 'admin@gym-zone.com' &&
+      form.value.password == 'admin'
+    ) {
+      this.navCtrl.push(HomePage, {});
+    } else {
+      let alert = this.alert.create({
+        title: 'Alert !',
+        subTitle: 'Failed to login',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }
+  }
+}
+
+
+
+
